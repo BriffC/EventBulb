@@ -1,17 +1,24 @@
+{% extends 'base.html' %}
+
 {% block content %} 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    <section>{% include 'events/list.html' %}</section>
-    
-</body>
-</html>
-
+<main class = "cols-2">
+    <section id = "upcoming-list" class = "card-background">
+        <section class = "card">
+            <h2>Upcoming Events</h2>
+        </section>
+        {% include 'partials/_events_list.html' with events=attending %}
+    </section>
+    <section id = "past-list" class = "card-background">
+        <section class = "card">
+            <h2>Past Events</h2>
+        </section>
+        {% if attended|length > 0 %}
+            {% include 'partials/_past_events.html' with events=attended %}
+        {% else %}
+        <section class ="card">
+            <p class = "centered">Events you are attending will show here.</p>
+        </section>
+        {% endif %}
+    </section>
+</main>
 {% endblock %}

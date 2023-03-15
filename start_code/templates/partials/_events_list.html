@@ -15,14 +15,14 @@
             {% if user|is_attending:event %}
             <form action="{% url 'events_remove_attending' event.id %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" name = "redirect_url" value = "{{ request.get_full_path}}">
-                <button type = "submit" class = "button red">Cancel Attendance</button>
+                <input type="hidden" name ="redirect_url" value = "{{ request.get_full_path}}">
+                <button type ="submit" class ="button red">Cancel Attendance</button>
             </form>
             {% else %}
                 <form action = "{% url 'events_add_attending' event.id %}" method = "post">
                     {% csrf_token %}
                     <input type = "hidden" name ="redirect_url" value = "{{ request.get_full_path }}">
-                    <button type = "submit" class = "button yellow">Attending</button>
+                    <button type = "submit" class = "button yellow">Press to attend</button>
                 </form>
             {% endif %}
          {% endif %}
